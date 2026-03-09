@@ -25,11 +25,18 @@ namespace PesonalWallet1.Domain.Entities
 
         public void Deposit(Money amount)
         {
-           
-            Balance = Balance.Add(amount);
+           if(amount.Amount <= 0)
+           {
+                throw new ArgumentException("Amount must be greater than zero");
+           }
+           Balance = Balance.Add(amount);
         }
         public void Withdraw(Money amount)
         {
+            if (amount.Amount <= 0)
+            {
+                throw new ArgumentException("Amount must be greater than zero");
+            }
             Balance = Balance.Substract(amount);
         }
 
