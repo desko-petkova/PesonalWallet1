@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Application\" />
-    <Folder Include="Infrastucture\" />
     <Folder Include="ConsoleUI\" />
   </ItemGroup>
 
