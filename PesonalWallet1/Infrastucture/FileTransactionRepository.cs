@@ -1,8 +1,9 @@
-﻿using PesonalWallet1.Domain.Entities;
+﻿using PesonalWallet1.Application;
+using PesonalWallet1.Domain.Entities;
 
 namespace PesonalWallet1.Infrastucture
 {
-    public class FileTransactionRepository
+    public class FileTransactionRepository : ITransactionRepository
     {
         private readonly FileStorage storage;
 

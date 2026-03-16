@@ -1,4 +1,5 @@
-﻿using PesonalWallet1.Domain.Entities;
+﻿using PesonalWallet1.Application;
+using PesonalWallet1.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PesonalWallet1.Infrastucture
 {
-    public class FileAccountRepository
+    public class FileAccountRepository : IAccountRepository
     {
         private readonly FileStorage storage;
 
