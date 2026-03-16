@@ -5,7 +5,7 @@ namespace PesonalWallet1.Infrastucture
     {
         private readonly string path;
 
-        public FileStorage(string path = "wallet.json")
+        public FileStorage(string path)
         {
             this.path = path;
         }
