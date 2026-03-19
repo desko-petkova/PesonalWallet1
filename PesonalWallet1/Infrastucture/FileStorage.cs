@@ -19,6 +19,8 @@ namespace PesonalWallet1.Infrastucture
             var json = File.ReadAllText(path);
 
             var storage = JsonSerializer.Deserialize<WalletStorage>(json);
+            if (storage == null)
+                throw new Exception("Deserialization return null.");
 
             return storage;
 

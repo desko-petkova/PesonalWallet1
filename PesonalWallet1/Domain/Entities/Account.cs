@@ -9,11 +9,11 @@ namespace PesonalWallet1.Domain.Entities
         public string Name { get;private set; } = string.Empty;
         public AccountType Type { get; private set; }
         public Money Balance { get; private set; }
-        public Account() { }
+       // public Account() { }
 
         public Account(int id, string name, AccountType type, Money balance)
         {
-            if (id <= 0) throw new ArgumentException("Id must be positive");
+            if (id < 0) throw new ArgumentException("Id must be positive");
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Account name is required");
 

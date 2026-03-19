@@ -57,7 +57,26 @@ namespace PesonalWallet1.ConsoleUI
 
         private void ShowAccount()
         {
-            throw new NotImplementedException();
+            var account = walletService.GetAccounts();
+
+            try
+            {
+                if(account.Count == 0)
+                {
+                    Console.WriteLine("No accounts found");
+                }
+                foreach(var acc  in account)
+                {
+                    Console.WriteLine($"{acc.Id} | {acc.Name} |" +
+                        $"{acc.Type} | {acc.Balance.Amount}");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.ReadLine();
         }
 
         private void AddTransaction(TransactionType income)
@@ -65,8 +84,7 @@ namespace PesonalWallet1.ConsoleUI
             throw new NotImplementedException();
         }
 
-      
-
+     
         private void ShowTransaction()
         {
             throw new NotImplementedException();
@@ -74,7 +92,28 @@ namespace PesonalWallet1.ConsoleUI
 
         private void CreateAccount()
         {
-            throw new NotImplementedException();
+            Console.Write("Name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Type:");
+            Console.WriteLine("Cash: 0");
+            Console.WriteLine("Bank: 1");
+            Console.WriteLine("DebitCard: 2");
+            Console.WriteLine("VirtualCard: 3");
+            Console.WriteLine("SavingBank: 4");
+            Console.Write("Choos type: ");
+            int type =int.Parse(Console.ReadLine());
+            var typeAccount = (AccountType)type;
+            Console.Write("Initial amount: ");
+             decimal amaunt = decimal.Parse(Console.ReadLine());
+            try
+            {
+                walletService.CreateAccount(name, typeAccount, amaunt);
+                Console.WriteLine("New account created!");
+            }catch (Exception ex) { 
+                Console.WriteLine(ex.Message); 
+            }          
+            Console.ReadLine();
+
         }
     }
 }

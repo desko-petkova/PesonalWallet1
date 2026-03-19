@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using PersonalWallet.Domain.Entitys;
-using PersonalWallet.Domain.Enums;
-using PersonalWallet.Domain.ValueObjects;
-using PersonalWallet.Infrastructure;
+using PersonalWallet2.Domain.Entities;
+using PersonalWallet2.Domain.Enums;
+using PesonalWallet1.Domain.ValueObjects;
+using PesonalWallet1.Infrastucture;
 
 namespace PersonalWallet.Tests
 {
@@ -65,7 +65,7 @@ namespace PersonalWallet.Tests
 
         // ============================= FileAccountRepository.cs ========================
 
-    
+
 
         [Test]
         public void Save_Should_Add_New_Account_When_Id_Is_Zero()
