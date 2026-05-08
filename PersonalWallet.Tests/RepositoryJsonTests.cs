@@ -1,8 +1,9 @@
 ﻿using NUnit.Framework;
-using PersonalWallet2.Domain.Entities;
-using PersonalWallet2.Domain.Enums;
+using PesonalWallet1.Domain.Entities;
+using PesonalWallet1.Domain.Enums;
 using PesonalWallet1.Domain.ValueObjects;
 using PesonalWallet1.Infrastucture;
+
 
 namespace PersonalWallet.Tests
 {
@@ -127,7 +128,7 @@ namespace PersonalWallet.Tests
         [Test]
         public void Save_Should_Add_New_Transaction_And_Generate_Id()
         {
-            var transaction = new Transaction(
+            var transaction = new PesonalWallet1.Domain.Entities.Transation(
                 0,
                 1,
                 TransactionType.Income,
@@ -136,7 +137,7 @@ namespace PersonalWallet.Tests
 
             repo.Save(transaction);
 
-            var all = repo.GetByAccount(1);
+            var all = repo.GetByAccountId(1);
 
             Assert.That(all.Count, Is.EqualTo(1));
             Assert.That(all[0].Id, Is.EqualTo(1));
@@ -152,11 +153,11 @@ namespace PersonalWallet.Tests
         [Test]
         public void GetByAccount_Should_Return_Only_Transactions_For_Given_Account()
         {
-            repo.Save(new Transaction(0, 1, TransactionType.Income, new Money(10), DateTime.Now));
-            repo.Save(new Transaction(0, 1, TransactionType.Expense, new Money(5), DateTime.Now));
-            repo.Save(new Transaction(0, 2, TransactionType.Income, new Money(100), DateTime.Now));
+            repo.Save(new PesonalWallet1.Domain.Entities.Transation(0, 1, TransactionType.Income, new Money(10), DateTime.Now));
+            repo.Save(new PesonalWallet1.Domain.Entities.Transation(0, 1, TransactionType.Expense, new Money(5), DateTime.Now));
+            repo.Save(new PesonalWallet1.Domain.Entities.Transation(0, 2, TransactionType.Income, new Money(100), DateTime.Now));
 
-            var result = repo.GetByAccount(1);
+            var result = repo.GetByAccountId(1);
 
             Assert.That(result.Count, Is.EqualTo(2));
             Assert.That(result.All(t => t.AccountId == 1), Is.True);
@@ -165,7 +166,7 @@ namespace PersonalWallet.Tests
         [Test]
         public void GetByAccount_Should_Return_Empty_List_When_No_Transactions()
         {
-            var result = repo.GetByAccount(999);
+            var result = repo.GetByAccountId(999);
 
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Count, Is.EqualTo(0));

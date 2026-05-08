@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\PesonalWallet1\PesonalWallet1\PesonalWallet1.csproj" />
+    <ProjectReference Include="..\PesonalWallet1\PesonalWallet1.csproj" />
   </ItemGroup>
 
 </Project>
